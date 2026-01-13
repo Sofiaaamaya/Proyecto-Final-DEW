@@ -1,0 +1,5 @@
+body {
+    display: grid;
+    grid-template-rows: 10% 25% 55% 10%;
+    height: 100vh;
+}
