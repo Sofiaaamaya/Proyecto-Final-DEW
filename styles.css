@@ -9,119 +9,126 @@
    ESTILOS GENERALES
 --------------------------------*/
 body {
-    font-family: "Poppins", sans-serif;
-    background-color: #fafafa;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-rows: 10% 25% 55% 10%;
-    height: 100vh;
-    }
+font-family: "Poppins", sans-serif;
+background-color: #fafafa;
+color: #333;
+margin: 0;
+padding: 0;
+display: grid;
+grid-template-rows: 10% 25% 55% 10%;
+height: 100vh;
+}
 
-    /* ------------------------------
-    NAVBAR
-    --------------------------------*/
-    .navbar {
-    background-color: #ffffff !important;
-    border-bottom: 1px solid #eee;
-    }
 
-    .navbar-brand {
-    font-size: 1.4rem;
-    letter-spacing: 1px;
-    color: #333 !important;
-    }
+/* ------------------------------
+NAVBAR
+--------------------------------*/
+.navbar {
+background-color: rgb(251, 230, 252) !important;
+border-bottom: 1px solid #eee;
+}
+.navbar-brand {
+font-size: 1.4rem;
+letter-spacing: 1px;
+color: #333 !important;
+}
+.navbar-brand:hover {
+color: #8a5a9f !important; /* tono lavanda elegante */
+}
+/* Íconos del header */
+.navbar .bi {
+transition: 0.2s ease;
+}
+.navbar a:hover .bi {
+color: #8a5a9f;
+}
+/* Carrito badge */
+.navbar .badge {
+font-size: 0.65rem;
+padding: 4px 6px;
+}
 
-    .navbar-brand:hover {
-    color: #8a5a9f !important; /* tono lavanda elegante */
-    }
 
-    /* Íconos del header */
-    .navbar .bi {
-    transition: 0.2s ease;
-    }
+.logo {
+    background-image: url("img/logo.webp");
+    height: 40px;
+    width: 140px; /* AJUSTA ESTO */
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 
-    .navbar a:hover .bi {
-    color: #8a5a9f;
-    }
+}
 
-    /* Carrito badge */
-    .navbar .badge {
-    font-size: 0.65rem;
-    padding: 4px 6px;
-    }
 
-    /* ------------------------------
-    OFFCANVAS (MENÚ LATERAL)
-    --------------------------------*/
-    .offcanvas {
-    background-color: #ffffff;
-    width: 260px;
-    border-left: 1px solid #eee;
-    }
 
-    .offcanvas-title {
-    font-weight: 600;
-    color: #333;
-    }
+/* ------------------------------
+Carrousel
+--------------------------------*/
 
-    .offcanvas .nav-link {
-    font-size: 1.1rem;
-    padding: 10px 0;
-    color: #444;
-    transition: 0.2s ease;
-    }
 
-    .offcanvas .nav-link:hover {
-    color: #8a5a9f;
-    padding-left: 5px;
-    }
 
-    /* ------------------------------
-    CARRUSEL (cuando lo añadas)
-    --------------------------------*/
-    #carousel {
-    border-radius: 10px;
-    overflow: hidden;
-    }
+/* ------------------------------
+OFFCANVAS (MENÚ LATERAL)
+--------------------------------*/
+.offcanvas {
+background-color: #ffffff;
+width: 260px;
+border-left: 1px solid #eee;
+}
+.offcanvas-title {
+font-weight: 600;
+color: #333;
+}
+.offcanvas .nav-link {
+font-size: 1.1rem;
+padding: 10px 0;
+color: #444;
+transition: 0.2s ease;
+}
+.offcanvas .nav-link:hover {
+color: #8a5a9f;
+padding-left: 5px;
+}
 
-    /* ------------------------------
-    CONTENIDO PRINCIPAL
-    --------------------------------*/
-    main {
-    min-height: 300px;
-    padding-bottom: 40px;
-    }
 
-    /* ------------------------------
-    FOOTER
-    --------------------------------*/
-    footer {
-    background-color: #f3f0f7;
-    color: #444;
-    border-top: 1px solid #e0d8ea;
-    }
 
-    footer p {
-    margin: 4px 0;
-    font-size: 0.95rem;
-    }
+/* ------------------------------
+CONTENIDO PRINCIPAL
+--------------------------------*/
+main {
+min-height: 300px;
+padding-bottom: 40px;
+}
 
-    footer p:first-child {
-    font-weight: 600;
-    color: #6d4c7d;
-    }
 
-    /* ------------------------------
-    RESPONSIVE
-    --------------------------------*/
-    @media (max-width: 768px) {
-    .navbar-brand {
-        font-size: 1.2rem;
-    }
+/* ------------------------------
+FOOTER
+--------------------------------*/
+footer {
+background-color: rgb(251, 230, 252) !important;
+color: #444;
+border-top: 1px solid #547d4c;
+}
+footer p {
+margin: 4px 0;
+font-size: 0.95rem;
+}
+footer p:first-child {
+font-weight: 600;
+color: #547d4c;
+}
 
-    .offcanvas {
-        width: 230px;
-    }
-    }
+
+/* ------------------------------
+RESPONSIVE
+--------------------------------*/
+@media (max-width: 768px) {
+.navbar-brand {
+    font-size: 1.2rem;
+}
+
+
+.offcanvas {
+    width: 230px;
+}
+}

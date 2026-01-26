@@ -1,3 +1,4 @@
+// ------ CARRITO -------
 const { createApp } = Vue;
 
 createApp({
@@ -12,3 +13,11 @@ createApp({
     }
   }
 }).mount("#app");
+
+
+
+
+
+
+
+// ------ CARROUSEL -------
