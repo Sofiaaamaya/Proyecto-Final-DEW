@@ -21,7 +21,6 @@
 
   <!-- BODY-->
   <body>
-
     <!-- Menú superior -->
     <nav class="navbar navbar-expand-lg bg-light px-3">
       <div class="container-fluid">
@@ -85,64 +84,26 @@
       </div>
     </div>
 
-
-
-    <!-- Carrusel -->
-    <section class="container">
-      <!-- Aquí irá el carrusel -->
-
-
-      <div class="carrusel">
-        <div class="carrusel-track">
-
-        <!-- Clon de la última -->
-
-          <div class="slide">
-            <img src="img/ft_carrousel_4.webp" alt="Crema Extracto de Naranja">
-          </div>
-
-
-        <!-- Sección normal -->
-          
-          <div class="slide">
-            <img src="img/foto_carrusel_1.webp" alt="Radiant serum">
-          </div>
-
-
-          
-          <div class="slide">
-            <img src="img/foto_carrusel_2.webp" alt="Crema Hidratante Natural">
-          </div>
-
-
-          <div class="slide">
-            <img src="img/ft_carrousel_3.webp" alt="Radiant seruCema Oxigenada">
-          </div>
-
-
-          <div class="slide">
-            <img src="img/ft_carrousel_4.webp" alt="Crema Extracto de Naranja">
-          </div>
-
-        <!-- Clon de la primera -->
-          <div class="slide">
-            <img src="img/foto_carrusel_1.webp" alt="Radiant serum">
-          </div>
-        </div>
-      </div>
-
-
-
-
-    </section>
-
     <!-- Contenido principal -->
-    <main class="container">
+    <main class="container-login">
       <!-- Aquí irá la información dinámica -->
-      <div class="info-recomendacion">
-        <p>
-
-        </p>
+      <div class="login">
+        
+          <form action="login.php" method="post">
+            <fieldset>
+              <legend>Registro de usuario</legend>
+              <label for="nombre">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" required><br><br>
+        
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required><br><br>
+        
+              <label for="edad">Edad:</label>
+              <input type="number" id="edad" name="edad" min="0" max="120" required><br><br>
+        
+              <button type="submit">Enviar</button>
+            </fieldset>
+          </form>
       </div>
 
 

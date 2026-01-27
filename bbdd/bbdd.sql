@@ -35,8 +35,8 @@ CREATE TABLE usuarios (
 -- 5) INSERTAR LOS PRODUCTOS
 ----------------------------------------------------------
 INSERT INTO productos (nombre, descripcion, precio, disponibilidad, imagen) VALUES
-('Crema Hidratante Aloe Vera', 'Hidratación profunda con extracto natural de aloe vera.', 14.99, 25, 'img/aloe_crema.jpg'),
-('Serum Vitamina C', 'Ilumina la piel y reduce manchas con vitamina C pura.', 22.50, 18, 'img/serum_vitc.jpg'),
-('Aceite Esencial de Lavanda', 'Relajante natural para piel y aromaterapia.', 9.95, 40, 'img/lavanda.jpg'),
-('Mascarilla Facial de Arcilla Rosa', 'Purifica y suaviza la piel sensible.', 12.80, 30, 'img/arcilla_rosa.jpg'),
-('Bálsamo Labial Karité', 'Nutrición intensa con manteca de karité.', 4.50, 50, 'img/balsamo_karite.jpg');
+('Crema Hidratante Aloe Vera', 'Hidratación profunda con extracto natural de aloe vera.', 14.99, 25, 'img/aloe_crema.webp'),
+('Serum Vitamina C', 'Ilumina la piel y reduce manchas con vitamina C pura.', 22.50, 18, 'img/serum_vitc.webp'),
+('Aceite Esencial de Lavanda', 'Relajante natural para piel y aromaterapia.', 9.95, 40, 'img/lavanda.webp'),
+('Mascarilla Facial de Arcilla Rosa', 'Purifica y suaviza la piel sensible.', 12.80, 30, 'img/arcilla_rosa.webp'),
+('Bálsamo Labial Karité', 'Nutrición intensa con manteca de karité.', 4.50, 50, 'img/balsamo_karite.webp');
