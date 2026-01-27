@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Vue script -->
     <script src="https://unpkg.com/vue@3"></script>
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
   </head>
 
 
@@ -23,39 +32,70 @@
   <body>
 
     <!-- Menú superior -->
-    <nav class="navbar navbar-expand-lg bg-light px-3">
-      <div class="container-fluid">
+   
 
-        <!-- LOGO -->
-        <a class="navbar-brand fw-bold" href="#">
-          <img src="img/logo.webp" alt="Logo" height="80">
-        </a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-content">
+                <!-- Logo -->
+                <div class="navbar-logo">
+                    <div class="logo-image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfUcSPlH9P5t3WUaOhC-lllCJfq--WSsM1ulKkuWm2KWnPsCd5MrQjS4kMoG0e0_-UN4O1UKTc7WEf4ZrimPdkloe9VUP2NiTE3AN4J0R8HNDTWo4FhXUzjF25j1QrhhivtI0r2N5HhWIFnC3D33Fg7PhYcdfW9zT4ut-IOMK7YJATajAEHPaFAX_IPXFbduOBjTsWTKMb1tx4IYulMl3jK0HCaJg5oXoFO7jzBWk93l71jUD4aII3IDoswjVUw-ymcL1C-CRKw" alt="Ayrd & Bloom Logo" class="logo-image">
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-title">Ayrd & Bloom</span>
+                        <span class="logo-subtitle">Beauty & Wellness</span>
+                    </div>
+                </div>
 
-        <!-- Íconos alineados a la derecha -->
-        <div class="d-flex align-items-center gap-3">
+                <!-- Menu Desktop -->
+                <div class="navbar-menu">
+                    <a href="#" class="menu-link">Inicio</a>
+                    <div class="menu-dropdown">
+                        <button class="menu-link dropdown-toggle">
+                            Productos
+                            <span class="material-icons-outlined dropdown-icon">expand_more</span>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" class="dropdown-item">Skincare</a>
+                            <a href="#" class="dropdown-item">Haircare</a>
+                            <a href="#" class="dropdown-item">Wellness</a>
+                        </div>
+                    </div>
+                    <a href="#" class="menu-link">Acerca de</a>
+                </div>
 
-          <!-- Lupa -->
-          <a href="#" class="text-dark">
-            <i class="bi bi-search fs-5"></i>
-          </a>
+                <!-- Actions -->
+                <div class="navbar-actions">
+                    <!-- Language Switcher -->
+                    <div class="language-switcher">
+                        <span class="lang-active">ES</span>
+                        <span class="lang-separator">|</span>
+                        <span class="lang-inactive">EN</span>
+                    </div>
 
-          <!-- Carrito -->
-          <a href="#" class="text-dark position-relative">
-            <i class="bi bi-cart3 fs-5"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              0
-            </span>
-          </a>
+                    <!-- User Icon -->
+                    <a href="#" class="nav-icon-link">
+                        <span class="material-icons-outlined">person</span>
+                        <span class="nav-icon-text">Iniciar sesión</span>
+                    </a>
 
-          <!-- Menú -->
-          <button class="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">
-            <i class="bi bi-list fs-1"></i>
-          </button>
+                    <!-- Cart Icon -->
+                    <a href="#" class="nav-icon-link cart-link">
+                        <span class="material-icons-outlined">shopping_bag</span>
+                        <span class="cart-badge">2</span>
+                    </a>
 
-        </div> <!-- cierre d-flex -->
-
-      </div> <!-- cierre container-fluid -->
+                    <!-- Dark Mode Toggle -->
+                    <button class="theme-toggle" id="themeToggle">
+                        <span class="material-icons-outlined light-icon">dark_mode</span>
+                        <span class="material-icons-outlined dark-icon">light_mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </nav>
+
 
     <!-- Menú lateral -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="menuLateral">
@@ -150,10 +190,80 @@
     </main>
 
     <!-- Footer -->
-    <footer class="text-center">
-      <p>© 2026 Ayrd & Bloom</p>
-      <p>Dirección: Calle Luna 45, Arrecife</p>
-      <p>Email: contacto@ayrdbloom.com | Tel: +34 600 123 456</p>
+
+
+    <footer class="footer">
+        <div class="footer-overlay"></div>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Columna 1: Sobre la marca -->
+                <div class="footer-column">
+                    <h3 class="footer-brand">Ayrd & Bloom</h3>
+                    <p class="footer-description">
+                        Belleza consciente que nutre tu piel y tu espíritu. Únete a nuestra comunidad y florece con nosotros.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <span class="material-icons-outlined">facebook</span>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <span class="material-icons-outlined">camera_alt</span>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Email">
+                            <span class="material-icons-outlined">alternate_email</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Explorar -->
+                <div class="footer-column">
+                    <h4 class="footer-title">Explorar</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Nuestra Historia</a></li>
+                        <li><a href="#" class="footer-link">Ingredientes</a></li>
+                        <li><a href="#" class="footer-link">Blog de Bienestar</a></li>
+                        <li><a href="#" class="footer-link">Programa de Lealtad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Ayuda -->
+                <div class="footer-column">
+                    <h4 class="footer-title">Ayuda</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Envíos y Devoluciones</a></li>
+                        <li><a href="#" class="footer-link">Preguntas Frecuentes</a></li>
+                        <li><a href="#" class="footer-link">Contacto</a></li>
+                        <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto -->
+                <div class="footer-column">
+                    <h4 class="footer-title">Contacto</h4>
+                    <ul class="footer-contact">
+                        <li class="contact-item">
+                            <span class="material-icons-outlined contact-icon">location_on</span>
+                            <span class="contact-text">Calle Principal 123,<br/>Ciudad Jardín, CP 28001</span>
+                        </li>
+                        <li class="contact-item">
+                            <span class="material-icons-outlined contact-icon">email</span>
+                            <span class="contact-text">hola@ayrdbloom.com</span>
+                        </li>
+                        <li class="contact-item">
+                            <span class="material-icons-outlined contact-icon">phone</span>
+                            <span class="contact-text">+34 912 345 678</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2023 Ayrd & Bloom. Todos los derechos reservados. Diseñado con amor.
+                </p>
+            </div>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
