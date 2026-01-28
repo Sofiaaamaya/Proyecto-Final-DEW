@@ -8,266 +8,315 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <!-- Estilos personalizados -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- Vue script -->
-    <script src="https://unpkg.com/vue@3"></script>
-
-
-
-
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
   </head>
 
-
-
-
-
-
-  <!-- BODY-->
   <body>
+    <!-- ÚNICO div#app para Vue -->
+    <div id="app">
 
-    <!-- Menú superior -->
-   
-
-    <nav class="navbar">
+      <!-- NAVBAR -->
+      <nav class="navbar">
         <div class="navbar-container">
-            <div class="navbar-content">
-                <!-- Logo -->
-                <div class="navbar-logo">
-                    <div class="logo-image-wrapper">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfUcSPlH9P5t3WUaOhC-lllCJfq--WSsM1ulKkuWm2KWnPsCd5MrQjS4kMoG0e0_-UN4O1UKTc7WEf4ZrimPdkloe9VUP2NiTE3AN4J0R8HNDTWo4FhXUzjF25j1QrhhivtI0r2N5HhWIFnC3D33Fg7PhYcdfW9zT4ut-IOMK7YJATajAEHPaFAX_IPXFbduOBjTsWTKMb1tx4IYulMl3jK0HCaJg5oXoFO7jzBWk93l71jUD4aII3IDoswjVUw-ymcL1C-CRKw" alt="Ayrd & Bloom Logo" class="logo-image">
-                    </div>
-                    <div class="logo-text">
-                        <span class="logo-title">Ayrd & Bloom</span>
-                        <span class="logo-subtitle">Beauty & Wellness</span>
-                    </div>
-                </div>
+          <div class="navbar-content">
 
-                <!-- Menu Desktop -->
-                <div class="navbar-menu">
-                    <a href="#" class="menu-link">Inicio</a>
-                    <div class="menu-dropdown">
-                        <button class="menu-link dropdown-toggle">
-                            Productos
-                            <span class="material-icons-outlined dropdown-icon">expand_more</span>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="#" class="dropdown-item">Skincare</a>
-                            <a href="#" class="dropdown-item">Haircare</a>
-                            <a href="#" class="dropdown-item">Wellness</a>
-                        </div>
-                    </div>
-                    <a href="#" class="menu-link">Acerca de</a>
-                </div>
-
-                <!-- Actions -->
-                <div class="navbar-actions">
-                    <!-- Language Switcher -->
-                    <div class="language-switcher">
-                        <span class="lang-active">ES</span>
-                        <span class="lang-separator">|</span>
-                        <span class="lang-inactive">EN</span>
-                    </div>
-
-                    <!-- User Icon -->
-                    <a href="#" class="nav-icon-link">
-                        <span class="material-icons-outlined">person</span>
-                        <span class="nav-icon-text">Iniciar sesión</span>
-                    </a>
-
-                    <!-- Cart Icon -->
-                    <a href="#" class="nav-icon-link cart-link">
-                        <span class="material-icons-outlined">shopping_bag</span>
-                        <span class="cart-badge">2</span>
-                    </a>
-
-                    <!-- Dark Mode Toggle -->
-                    <button class="theme-toggle" id="themeToggle">
-                        <span class="material-icons-outlined light-icon">dark_mode</span>
-                        <span class="material-icons-outlined dark-icon">light_mode</span>
-                    </button>
-                </div>
+            <!-- Logo -->
+            <div class="navbar-logo" @click.prevent="vista='inicio'">
+              <div class="logo-image-wrapper">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfUcSPlH9P5t3WUaOhC-lllCJfq--WSsM1ulKkuWm2KWnPsCd5MrQjS4kMoG0e0_-UN4O1UKTc7WEf4ZrimPdkloe9VUP2NiTE3AN4J0R8HNDTWo4FhXUzjF25j1QrhhivtI0r2N5HhWIFnC3D33Fg7PhYcdfW9zT4ut-IOMK7YJATajAEHPaFAX_IPXFbduOBjTsWTKMb1tx4IYulMl3jK0HCaJg5oXoFO7jzBWk93l71jUD4aII3IDoswjVUw-ymcL1C-CRKw"
+                    alt="Ayrd & Bloom Logo" class="logo-image">
+              </div>
+              <div class="logo-text">
+                <span class="logo-title">Ayrd & Bloom</span>
+                <span class="logo-subtitle">Beauty & Wellness</span>
+              </div>
             </div>
-        </div>
-    </nav>
 
+            <!-- Menu Desktop -->
+            <div class="navbar-menu">
+              <a href="#" class="menu-link" @click.prevent="vista='inicio'">Inicio</a>
 
-    <!-- Menú lateral -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="menuLateral">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Menú</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-      </div>
+              <div class="menu-dropdown">
+                <button class="menu-link dropdown-toggle" @click.prevent="vista='productos'">
+                  Productos
+                  <span class="material-icons-outlined dropdown-icon">expand_more</span>
+                </button>
 
-      <div class="offcanvas-body">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#inicio">Inicio</a>
-          </li>
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item"
+                    v-for="p in productos" :key="p.id"
+                    @click.prevent="verProducto(p.id)">
+                    {{ p.nombre }}
+                  </a>
+                </div>
+              </div>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#productos">Productos</a>
-          </li>
+              <a href="#" class="menu-link" @click.prevent="vista='acerca'">Acerca de</a>
+              <a href="#" class="menu-link" @click.prevent="vista='login'">Registrarse / Iniciar sesión</a>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#acerda_de">Acerca de</a>
-          </li>
+              <!-- Carrito -->
+              <a href="#" class="nav-icon-link cart-link" @click.prevent="vista='carrito'">
+                <span class="material-icons-outlined">shopping_bag</span>
+                <span class="cart-badge">{{ totalUnidadesCarrito }}</span>
+              </a>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#login">Registrarse / Iniciar sesión</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+              <!-- Idioma -->
+              <div class="language-switcher" @click="toggleIdioma">
+                <span class="lang-active">{{ idiomaActual.toUpperCase() }}</span>
+                <span class="lang-separator">|</span>
+                <span class="lang-inactive">
+                  {{ idiomaActual === 'es' ? 'EN' : 'ES' }}
+                </span>
+              </div>
+            </div>
 
+            <!-- Actions -->
+            <div class="navbar-actions">
+              <!-- Dark Mode Toggle -->
+              <button class="theme-toggle" id="themeToggle">
+                <span class="material-icons-outlined light-icon">dark_mode</span>
+                <span class="material-icons-outlined dark-icon">light_mode</span>
+              </button>
+            </div>
 
-
-    <!-- Carrusel -->
-    <section class="container">
-      <!-- Aquí irá el carrusel -->
-
-
-      <div class="carrusel">
-        <div class="carrusel-track">
-
-        <!-- Clon de la última -->
-
-          <div class="slide">
-            <img src="img/ft_carrousel_4.webp" alt="Crema Extracto de Naranja">
-          </div>
-
-
-        <!-- Sección normal -->
-          
-          <div class="slide">
-            <img src="img/foto_carrusel_1.webp" alt="Radiant serum">
-          </div>
-
-
-          
-          <div class="slide">
-            <img src="img/foto_carrusel_2.webp" alt="Crema Hidratante Natural">
-          </div>
-
-
-          <div class="slide">
-            <img src="img/ft_carrousel_3.webp" alt="Radiant seruCema Oxigenada">
-          </div>
-
-
-          <div class="slide">
-            <img src="img/ft_carrousel_4.webp" alt="Crema Extracto de Naranja">
-          </div>
-
-        <!-- Clon de la primera -->
-          <div class="slide">
-            <img src="img/foto_carrusel_1.webp" alt="Radiant serum">
           </div>
         </div>
+      </nav>
+
+      <!-- Menú lateral (Bootstrap) -->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="menuLateral">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Menú</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="vista='inicio'">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="vista='productos'">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="vista='acerca'">Acerca de</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="vista='login'">Registrarse / Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" @click.prevent="vista='carrito'">Carrito</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
+      <!-- CARRUSEL (fuera de Vue, solo HTML estático) -->
+      <section class="container">
+        <div class="carrusel">
+          <div class="carrusel-track">
+            <!-- Clon de la última -->
+            <div class="slide">
+              <img src="img/carrusel/foto_carrusel_5.jpeg" alt="Esencia Pura">
+            </div>
 
+            <!-- Slides principales -->
+            <div class="slide">
+              <img src="img/carrusel/ft_carrusel_1.png" alt="Natural Radiance">
+            </div>
+            <div class="slide">
+              <img src="img/carrusel/foto_carrusel_2.webp" alt="Calma Interior">
+            </div>
+            <div class="slide">
+              <img src="img/carrusel/ft_carrousel_3.png" alt="Oro Regenerador">
+            </div>
+            <div class="slide">
+              <img src="img/carrusel/foto_carrusel_4.png" alt="Belleza Natural">
+            </div>
+            <div class="slide">
+              <img src="img/carrusel/foto_carrusel_5.jpeg" alt="Esencia Pura">
+            </div>
 
+            <!-- Clon de la primera -->
+            <div class="slide">
+              <img src="img/carrusel/ft_carrusel_1.png" alt="Natural Radiance">
+            </div>
+          </div>
+        </div>
+      </section>
 
-    </section>
+      <!-- CONTENIDO PRINCIPAL (Vue) -->
+      <main class="container">
 
-    <!-- Contenido principal -->
-    <main class="container">
-      <!-- Aquí irá la información dinámica -->
-      <div class="info-recomendacion">
-        <p>
+        <!-- INICIO -->
+        <section v-if="vista === 'inicio'">
+          <h2>Recomendado</h2>
+          <div v-if="recomendado">
+            <h3>{{ recomendado.nombre }}</h3>
+            <img :src="recomendado.imagen" style="max-width:200px">
+            <p>{{ recomendado.descripcion }}</p>
+            <p><strong>{{ recomendado.precio }} €</strong></p>
+            <button @click="addCarrito(recomendado)">Añadir al carrito</button>
+          </div>
+        </section>
 
-        </p>
-      </div>
+        <!-- PRODUCTOS -->
+        <section v-if="vista === 'productos'">
+          <h2>Productos</h2>
+          <ul>
+            <li v-for="p in productos" :key="p.id" @click="verProducto(p.id)">
+              {{ p.nombre }} - {{ p.precio }} €
+            </li>
+          </ul>
+        </section>
 
+        <!-- DETALLE -->
+        <section v-if="vista === 'detalle' && producto">
+          <h2>{{ producto.nombre }}</h2>
+          <img :src="producto.imagen" style="max-width:250px">
+          <p>{{ producto.descripcion }}</p>
+          <p><strong>{{ producto.precio }} €</strong></p>
+          <button @click="addCarrito(producto)">Añadir al carrito</button>
+        </section>
 
+        <!-- ACERCA -->
+        <section v-if="vista === 'acerca'">
+          <h2>Acerca de la compañía</h2>
+          <p>Texto sobre la empresa...</p>
+        </section>
 
-    </main>
+        <!-- CARRITO -->
+        <section v-if="vista === 'carrito'">
+          <h2>Carrito</h2>
+          <div v-if="carrito.length === 0">Carrito vacío</div>
 
-    <!-- Footer -->
+          <ul v-else>
+            <li v-for="item in carrito" :key="item.id">
+              {{ item.nombre }} x {{ item.cantidad }} — {{ item.precio }} €
+              <button @click="removeCarrito(item.id)">Eliminar</button>
+            </li>
+          </ul>
 
+          <p><strong>Total: {{ total }} €</strong></p>
+        </section>
 
-    <footer class="footer">
+        <!-- LOGIN -->
+        <section v-if="vista === 'login'">
+          <h2>Registro</h2>
+
+          <form @submit.prevent="registrar">
+            <label>Nombre:</label>
+            <input v-model="form.nombre" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]{3,40}$" required>
+
+            <label>ID:</label>
+            <input v-model="form.id" pattern="^[0-9]{8}[A-Za-z]$" required>
+
+            <label>Email:</label>
+            <input v-model="form.email" pattern="^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$" required>
+
+            <label>Cuenta bancaria:</label>
+            <input v-model="form.cuenta" pattern="^ES[0-9]{22}$" required>
+
+            <label>Teléfono:</label>
+            <input v-model="form.telefono" pattern="^[0-9]{9}$" required>
+
+            <button type="submit">Enviar</button>
+          </form>
+        </section>
+
+      </main>
+
+      <!-- FOOTER -->
+      <footer class="footer">
         <div class="footer-overlay"></div>
         <div class="footer-container">
-            <div class="footer-grid">
-                <!-- Columna 1: Sobre la marca -->
-                <div class="footer-column">
-                    <h3 class="footer-brand">Ayrd & Bloom</h3>
-                    <p class="footer-description">
-                        Belleza consciente que nutre tu piel y tu espíritu. Únete a nuestra comunidad y florece con nosotros.
-                    </p>
-                    <div class="footer-social">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <span class="material-icons-outlined">facebook</span>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <span class="material-icons-outlined">camera_alt</span>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Email">
-                            <span class="material-icons-outlined">alternate_email</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Columna 2: Explorar -->
-                <div class="footer-column">
-                    <h4 class="footer-title">Explorar</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Nuestra Historia</a></li>
-                        <li><a href="#" class="footer-link">Ingredientes</a></li>
-                        <li><a href="#" class="footer-link">Blog de Bienestar</a></li>
-                        <li><a href="#" class="footer-link">Programa de Lealtad</a></li>
-                    </ul>
-                </div>
-
-                <!-- Columna 3: Ayuda -->
-                <div class="footer-column">
-                    <h4 class="footer-title">Ayuda</h4>
-                    <ul class="footer-links">
-                        <li><a href="#" class="footer-link">Envíos y Devoluciones</a></li>
-                        <li><a href="#" class="footer-link">Preguntas Frecuentes</a></li>
-                        <li><a href="#" class="footer-link">Contacto</a></li>
-                        <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
-                    </ul>
-                </div>
-
-                <!-- Columna 4: Contacto -->
-                <div class="footer-column">
-                    <h4 class="footer-title">Contacto</h4>
-                    <ul class="footer-contact">
-                        <li class="contact-item">
-                            <span class="material-icons-outlined contact-icon">location_on</span>
-                            <span class="contact-text">Calle Principal 123,<br/>Ciudad Jardín, CP 28001</span>
-                        </li>
-                        <li class="contact-item">
-                            <span class="material-icons-outlined contact-icon">email</span>
-                            <span class="contact-text">hola@ayrdbloom.com</span>
-                        </li>
-                        <li class="contact-item">
-                            <span class="material-icons-outlined contact-icon">phone</span>
-                            <span class="contact-text">+34 912 345 678</span>
-                        </li>
-                    </ul>
-                </div>
+          <div class="footer-grid">
+            <!-- Columna 1 -->
+            <div class="footer-column">
+              <h3 class="footer-brand">Ayrd & Bloom</h3>
+              <p class="footer-description">
+                Belleza consciente que nutre tu piel y tu espíritu.
+              </p>
+              <div class="footer-social">
+                <a href="#" class="social-link" aria-label="Facebook">
+                  <span class="material-icons-outlined">facebook</span>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                  <span class="material-icons-outlined">camera_alt</span>
+                </a>
+                <a href="#" class="social-link" aria-label="Email">
+                  <span class="material-icons-outlined">alternate_email</span>
+                </a>
+              </div>
             </div>
 
-            <!-- Copyright -->
-            <div class="footer-bottom">
-                <p class="footer-copyright">
-                    © 2023 Ayrd & Bloom. Todos los derechos reservados. Diseñado con amor.
-                </p>
+            <!-- Columna 2 -->
+            <div class="footer-column">
+              <h4 class="footer-title">Explorar</h4>
+              <ul class="footer-links">
+                <li><a href="#" class="footer-link">Nuestra Historia</a></li>
+                <li><a href="#" class="footer-link">Ingredientes</a></li>
+                <li><a href="#" class="footer-link">Blog de Bienestar</a></li>
+                <li><a href="#" class="footer-link">Programa de Lealtad</a></li>
+              </ul>
             </div>
+
+            <!-- Columna 3 -->
+            <div class="footer-column">
+              <h4 class="footer-title">Ayuda</h4>
+              <ul class="footer-links">
+                <li><a href="#" class="footer-link">Envíos y Devoluciones</a></li>
+                <li><a href="#" class="footer-link">Preguntas Frecuentes</a></li>
+                <li><a href="#" class="footer-link">Contacto</a></li>
+                <li><a href="#" class="footer-link">Términos y Condiciones</a></li>
+              </ul>
+            </div>
+
+            <!-- Columna 4 -->
+            <div class="footer-column">
+              <h4 class="footer-title">Contacto</h4>
+              <ul class="footer-contact">
+                <li class="contact-item">
+                  <span class="material-icons-outlined contact-icon">location_on</span>
+                  <span class="contact-text">Calle Principal 123,<br/>Ciudad Jardín, CP 28001</span>
+                </li>
+                <li class="contact-item">
+                  <span class="material-icons-outlined contact-icon">email</span>
+                  <span class="contact-text">hola@ayrdbloom.com</span>
+                </li>
+                <li class="contact-item">
+                  <span class="material-icons-outlined contact-icon">phone</span>
+                  <span class="contact-text">+34 912 345 678</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Copyright -->
+          <div class="footer-bottom">
+            <p class="footer-copyright">
+              © 2023 Ayrd & Bloom. Todos los derechos reservados.
+            </p>
+          </div>
         </div>
-    </footer>
+      </footer>
 
-    <!-- Bootstrap JS -->
+    </div><!-- Fin #app -->
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Vue PRIMERO -->
+    <script src="https://unpkg.com/vue@3"></script>
+    <!-- Luego app.js (Vue) -->
+    <script src="app.js"></script>
+    <!-- Por último script.js (Carrusel y Footer) -->
     <script src="script.js"></script>
   </body>
 </html>
+
