@@ -170,7 +170,9 @@
         <section v-if="vista === 'productos'">
           <h2>Productos</h2>
           <ul>
-            <li v-for="p in productos" :key="p.id" @click="verProducto(p.id)">
+            <li v-for="p in productos" :key="p.id"
+                @click="verProducto(p.id)"
+                :class="{ 'sin-stock': p.disponibilidad == 0 }">
               {{ p.nombre }} - {{ p.precio }} €
             </li>
           </ul>
@@ -200,37 +202,155 @@
             <li v-for="item in carrito" :key="item.id">
               {{ item.nombre }} x {{ item.cantidad }} — {{ item.precio }} €
               <button @click="removeCarrito(item.id)">Eliminar</button>
+
             </li>
           </ul>
 
           <p><strong>Total: {{ total }} €</strong></p>
+
+          <button v-if="carrito.length" @click="confirmarPedido">Confirmar pedido</button>
+          <button v-if="carrito.length" @click="cancelarPedido">Cancelar pedido</button>
         </section>
 
-        <!-- LOGIN -->
-        <section v-if="vista === 'login'">
-          <h2>Registro</h2>
 
-          <form @submit.prevent="registrar">
-            <label>Nombre:</label>
-            <input v-model="form.nombre" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]{3,40}$" required>
+        <!-- LOGIN / REGISTRO -->
+        <section v-if="vista === 'login'" class="registro-section">
+          <div class="registro-container">
+            <h2 class="registro-title">Registro</h2>
 
-            <label>ID:</label>
-            <input v-model="form.id" pattern="^[0-9]{8}[A-Za-z]$" required>
+            <!-- Usuario logueado -->
+            <div v-if="usuario" class="user-logged-alert">
+              <strong>¡Bienvenido de nuevo!</strong>
+              <p class="user-info">{{ usuario.nombre }}<br>{{ usuario.email }}</p>
+              <button class="btn-logout" @click="cerrarSesion">
+                <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 5px;">logout</span>
+                Cerrar sesión
+              </button>
+            </div>
 
-            <label>Email:</label>
-            <input v-model="form.email" pattern="^[\\w.-]+@[\\w.-]+\\.[A-Za-z]{2,}$" required>
+            <!-- Formulario de Registro -->
+            <form v-else @submit.prevent="registrar" class="registro-form">
+              <!-- Decoraciones -->
+              <div class="form-decoration form-decoration-1"></div>
+              <div class="form-decoration form-decoration-2"></div>
 
-            <label>Cuenta bancaria:</label>
-            <input v-model="form.cuenta" pattern="^ES[0-9]{22}$" required>
+              <!-- Nombre -->
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 5px; font-size: 1.2rem;">person</span>
+                  Nombre completo
+                </label>
+                <input 
+                  class="form-input" 
+                  v-model="form.nombre"
+                  type="text"
+                  placeholder="Ej: María García López"
+                  pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,40}$" 
+                  required>
+                <small class="form-help-text">Entre 3 y 40 caracteres</small>
+              </div>
 
-            <label>Teléfono:</label>
-            <input v-model="form.telefono" pattern="^[0-9]{9}$" required>
+              <!-- Email -->
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 5px; font-size: 1.2rem;">email</span>
+                  Correo electrónico
+                </label>
+                <input 
+                  class="form-input" 
+                  v-model="form.email"
+                  type="email"
+                  placeholder="tu.email@ejemplo.com"
+                  pattern="^[\w.-]+@[\w.-]+\.[A-Za-z]{2,}$" 
+                  required>
+                <small class="form-help-text">Introduce un email válido</small>
+              </div>
 
-            <button type="submit">Enviar</button>
-          </form>
+              <!-- Teléfono -->
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 5px; font-size: 1.2rem;">phone</span>
+                  Teléfono
+                </label>
+                <input 
+                  class="form-input" 
+                  v-model="form.telefono"
+                  type="tel"
+                  placeholder="612345678"
+                  pattern="^[0-9]{9}$" 
+                  required>
+                <small class="form-help-text">9 dígitos sin espacios</small>
+              </div>
+
+              <!-- Dirección -->
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 5px; font-size: 1.2rem;">home</span>
+                  Dirección
+                </label>
+                <input 
+                  class="form-input" 
+                  v-model="form.direccion"
+                  type="text"
+                  placeholder="Calle Principal, 123, 1ºA"
+                  pattern="^[A-Za-z0-9ÁÉÍÓÚáéíóúÑñ\s,.-]{5,100}$" 
+                  required>
+                <small class="form-help-text">Dirección completa de envío</small>
+              </div>
+
+              <!-- Ciudad -->
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 5px; font-size: 1.2rem;">location_city</span>
+                  Ciudad
+                </label>
+                <input 
+                  class="form-input" 
+                  v-model="form.ciudad"
+                  type="text"
+                  placeholder="Madrid"
+                  pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]{3,40}$" 
+                  required>
+                <small class="form-help-text">Ciudad de residencia</small>
+              </div>
+
+              <!-- Cuenta bancaria -->
+              <div class="form-group">
+                <label class="form-label">
+                  <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 5px; font-size: 1.2rem;">account_balance</span>
+                  Cuenta bancaria (IBAN)
+                </label>
+                <input 
+                  class="form-input" 
+                  v-model="form.cuenta"
+                  type="text"
+                  placeholder="ES1234567890123456789012"
+                  pattern="^ES[0-9]{22}$" 
+                  required>
+                <small class="form-help-text">IBAN español (ES + 22 dígitos)</small>
+              </div>
+
+              <!-- Botón Submit -->
+              <button type="submit" class="btn-submit">
+                <span class="material-icons-outlined" style="vertical-align: middle; margin-right: 8px;">person_add</span>
+                Crear cuenta
+              </button>
+            </form>
+          </div>
         </section>
 
       </main>
+      <!-- OTRA INFORMACIÓN: Otros productos -->
+      <div class="container mt-4">
+        <h3>Otros productos</h3>
+        <ul>
+          <li v-for="p in productos.slice(1)" :key="p.id"
+              @click="verProducto(p.id)"
+              :class="{ 'sin-stock': p.disponibilidad == 0 }">
+            {{ p.nombre }} - {{ p.precio }} €
+          </li>
+        </ul>
+      </div>
 
       <!-- FOOTER -->
       <footer class="footer">

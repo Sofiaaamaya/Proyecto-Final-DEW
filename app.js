@@ -25,12 +25,15 @@ app = Vue.createApp({
             idiomaActual: 'es',
 
             form: {
-                nombre: '',
-                id: '',
-                email: '',
-                cuenta: '',
-                telefono: ''
-            }
+            nombre: '',
+            email: '',
+            cuenta: '',
+            telefono: '',
+            direccion: '',
+            ciudad: ''
+            },
+
+            usuario: null
         }
     },
 
@@ -56,7 +59,7 @@ app = Vue.createApp({
 
         // AJAX: obtener todos los productos
         cargarProductos() {
-            fetch("getProductos.php")
+            fetch("php/getProductos.php")
                 .then(r => r.json())
                 .then(data => {
                     this.productos = data
@@ -65,7 +68,7 @@ app = Vue.createApp({
 
         // AJAX: obtener un producto por ID
         verProducto(id) {
-            fetch("getProducto.php?id=" + id)
+            fetch("php/getProducto.php?id=" + id)
                 .then(r => r.json())
                 .then(data => {
                     this.producto = data
@@ -98,7 +101,7 @@ app = Vue.createApp({
 
         // Registro AJAX
         registrar() {
-            fetch("registrarUsuario.php", {
+            fetch("php/registrarUsuario.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(this.form)
@@ -106,22 +109,45 @@ app = Vue.createApp({
                 .then(r => r.json())
                 .then(data => {
                     alert("Usuario registrado correctamente")
-                    sessionStorage.setItem("usuario", JSON.stringify(this.form))
+                    this.usuario = { nombre: this.form.nombre, email: this.form.email };
+                    sessionStorage.setItem("usuario", JSON.stringify(this.usuario));
                 })
+        },
+
+        cerrarSesion() {
+        this.usuario = null;
+        sessionStorage.removeItem("usuario");
         },
 
         // Idioma
         toggleIdioma() {
             this.idiomaActual = this.idiomaActual === 'es' ? 'en' : 'es'
+        },
+
+        // CONFIRMAR PEDIDO
+        confirmarPedido() {
+            alert("Pedido confirmado (simulado)")
+            this.carrito = []
+            localStorage.setItem("carrito", JSON.stringify(this.carrito))
+        },
+
+        // CANCELAR PEDIDO
+        cancelarPedido() {
+            if (confirm("¿Seguro que quieres cancelar el pedido?")) {
+                this.carrito = []
+                localStorage.setItem("carrito", JSON.stringify(this.carrito))
+            }
         }
     },
 
     mounted() {
         this.cargarProductos()
         this.cargarCarrito()
+
+        const u = sessionStorage.getItem("usuario");
+        if (u) this.usuario = JSON.parse(u);
     }
 
 })
 
 app.mount('#app')
-
